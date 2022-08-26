@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/javascript">
+			function UserGreeting(props) {
+				return React.createElement("h1", null, "welcome back!");
+			}
+
+			function GuestGreeting(props) {
+				return React.createElement("h1", null, "please sign up.");
+			}
+
+			function Greeting(props) {
+				const isLoggedIn = props.isLoggedIn;
+				if (isLoggedIn) {
+					//return React.createElement(UserGreeting);
+					return UserGreeting();
+				}
+					//return React.createElement(GuestGreeting);
+					return GuestGreeting();
+			}
+
+			const element = React.createElement(Greeting, {isLoggedIn: false});
+			ReactDOM.render(element, document.getElementById("root"));
+        </script>
+    </body>
+</html>
