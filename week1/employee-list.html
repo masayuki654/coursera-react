@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <style>
+            .employee-list {
+                border: 1px solid black;
+                list-style-type: none;
+                padding: 5px;
+                margin: 5px;
+                width: auto;
+            }
+            .employee {
+                border: 1px solid #ccc;
+                margin: 5px;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/javascript">
+            function Employee(props) {
+                return React.createElement("li", {className: "employee"},
+                       React.createElement("div", null,
+                       React.createElement("b", null, "Employee Name:"), " ", props.name),
+                       React.createElement("div", null,
+                       React.createElement("b", null, "Gender:"), " ", props.gender));
+            }
+
+            function EmployeeList(props) {
+                const employees = props.employees;
+                let listItems = employees.map( e => {
+                    return React.createElement(Employee, {
+                        key: e.id,
+                        name: e.name,
+                        gender: e.gender
+                    });
+                });
+                return React.createElement("ul", {className: "employee-list"}, listItems);
+            }
+
+			const employees = [
+            { id: 1, name: "Martin", gender: "Male" },
+            { id: 2, name: "Katherine", gender: "Female" },
+            { id: 3, name: "Paul", gender: "Male" },
+            ];
+
+            const element = React.createElement(EmployeeList, {employees: employees});
+            ReactDOM.render(element, document.getElementById("root"));
+        </script>
+    </body>
+</html>
