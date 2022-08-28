@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <style>
+            .header {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <div id="root"></div>
+        <script type="text/babel">
+            class Welcome extends React.Component {
+                constructor(props) {
+                    super(props)
+                }
+
+                formatName = user => {
+                    return user.firstName + " " + user.lastName;
+                }
+
+                render() {
+                    if (this.props.user) {
+                        return <h1 className="message">
+                            Welcome, {this.formatName(this.props.user)}!
+                        </h1>;
+                    }
+                    return <h1 className="message">Hello, stranger!</h1>
+                }
+            }
+
+            const user = {
+                firstName: "Masayuki",
+                lastName: "Inoue"
+            }
+
+            ReactDOM.render(<Welcome user={user}/>, document.getElementById("root"));
+        </script>
+    </body>
+</html>
