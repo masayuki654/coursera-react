@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <style>
+            .header {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <div id="root"></div>
+        <script type="text/babel">
+            
+            class Toggle extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        isToggleOn: true,
+                        color: "blue",
+                        name: "",
+                        location: "",
+                    };
+                    this.changeName = this.changeName.bind(this);
+                    this.changeLocation = this.changeLocation.bind(this);
+                    this.handleClick = this.handleClick.bind(this);
+                }
+
+                changeName(event) {
+                    this.setState({ name: event.target.value });
+                }
+
+                changeLocation(event) {
+                    this.setState({ location: event.target.value });
+                }
+
+                handleClick() {
+                    const value = this.state.color == "blue" ? "white" : "blue";
+                    this.setState(prevState => ({
+                        isToggleOn: !prevState.isToggleOn,
+                        color: value
+                    }))
+                }
+
+                render() {
+                    const isToggleOn = this.state.isToggleOn;
+
+                    return (
+                        <div>
+                            <label htmlFor="name">Enter your name:</label>
+                            <input id="name" type="text" value={this.state.name} placeholder="Full name" onChange={event => this.changeName(event)} />
+                            <br/>
+                            <br/>
+                            <label htmlFor="location">Enter your location:</label>
+                            <input id="location" type="text" value={this.state.location} placeholder="Location" onChange={event => this.changeLocation(event)} />
+                            <div className={this.state.color}>
+                                {isToggleOn ? <h2>Name: {this.state.name}</h2> : null}
+                                {isToggleOn ? <h2>Location: {this.state.location}</h2> : null}
+                            </div>
+                            <button className="toggle-btn" onClick={this.handleClick}>
+                                {isToggleOn ? "Hide User" : "Show user"}
+                            </button>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render(<Toggle/>, document.getElementById("root"));
+        </script>
+    </body>
+</html>
