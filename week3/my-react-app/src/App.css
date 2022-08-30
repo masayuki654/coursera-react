@@ -1,0 +1,24 @@
+.App {
+  text-align: center;
+}
+
+.btn {
+  padding: 10px 40px;
+  font-size: 1.5em;
+  margin: 20px;
+}
+
+.content {
+  color: blue;
+}
+
+.label {
+  font-size: 1.4em;
+  padding: 10px;
+}
+
+.text-input {
+  width: 15vw;
+  font-size: 1.2em;
+  padding: 10px;
+}
