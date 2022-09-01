@@ -23,34 +23,7 @@
             { productName: 'Rounded', outOfStock: false, price: '50 USD', imageSrc: 'glasskart-assets/rounded.jpg' },
         ];
         //Write the code for creating and rendering ProductList component within this script tag
-        function Product(props) {
-            if (props.outOfStock) {
-                return null;
-            }
-            return React.createElement("div", null,
-                   React.createElement("img", {src: props.imageSrc, width: "150px", height: "150px"}, null),
-                   React.createElement("div", {style: {"fontFamily": "serif"}}, props.productName), !props.discountPrice ?
-                   React.createElement("div", {style: {"fontFamily": "serif"}}, props.price) :
-                   React.createElement("div", {style: {"display": "flex"}},
-                   React.createElement("div", {style: {"fontFamily": "serif"}}, React.createElement("s", null, props.price)),
-                   React.createElement("div", {style: {"fontFamily": "serif"}}, props.discountPrice)) 
-                   );
-        }
-
-        function ProductList(props) {
-            const productList = props.products;
-            return productList.map(product => {
-                return React.createElement(Product, {
-                    key: product.productName,
-                    productName: product.productName,
-                    outOfStock: product.outOfStock,
-                    discountPrice: product.discountPrice,
-                    price: product.price,
-                    imageSrc: product.imageSrc
-                })
-            })
-
-        }
+        
 
         const element = React.createElement(ProductList, {products: products});
         ReactDOM.render(element, document.getElementById("root"));

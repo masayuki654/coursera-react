@@ -1,0 +1,13 @@
+.todo-display {
+  margin: 30px;
+}
+
+.todo-count {
+  color: blue;
+  font-weight: 500;
+}
+
+.todo-list li {
+  margin: 10px;
+  padding: 10px;
+}
