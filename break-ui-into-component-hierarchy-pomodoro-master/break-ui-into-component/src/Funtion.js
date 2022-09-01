@@ -1,6 +1,6 @@
-export default function TransferTime(props) {
-    let minute = Math.floor(props/60);
-    let second = props - 60 * minute;
+export function transferTime(time) {
+    let minute = Math.floor(time/60);
+    let second = time - 60 * minute;
     if (minute >= 10 && second >= 10) {
         return `${minute}:${second}`;
     } else if (minute < 10 && second >= 10) {
